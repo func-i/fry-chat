@@ -12,11 +12,12 @@
     NotificationProcessor.prototype.run = function(post) {
       var notification;
       if (Notification.permission === 'granted') {
-        return notification = new Notification(post.from.name + "Says:", {
+        notification = new Notification(post.from.name + " Says:", {
           body: post.text,
           icon: post.from.avatar_url
         });
       }
+      return post;
     };
 
     return NotificationProcessor;

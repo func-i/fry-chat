@@ -4,7 +4,7 @@ class window.PreRenderer
 
   render: (message) ->
     for plugin in @plugins
-      message.content = plugin.run(message.content) if plugin.pattern.test(message.content)
+      message.text = plugin.run(message.text) if plugin.pattern.test(message.text)
 
     message
 
