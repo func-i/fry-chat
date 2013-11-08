@@ -1,4 +1,2 @@
-Template.post.helpers  {
-  processText: (text, from) ->
-   window.preRenderer.render(text, from)
-}
+Template.post.created = ->
+  window.preRenderer.render(@.data)

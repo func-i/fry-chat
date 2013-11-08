@@ -7,10 +7,10 @@ class window.NotificationProcessor
     #return if !("Notification" in window)
 
     if Notification.permission == 'granted'
-#     notification = new Notification(from.name + " Says:", {
-#       body: text,
-#       icon: from.avatar_url
-#       })
+      notification = new Notification(from.name + " Says:", {
+        body: text,
+        icon: from.avatar_url
+        })
 
     return text
 
