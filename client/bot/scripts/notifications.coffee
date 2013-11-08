@@ -2,17 +2,17 @@ class window.NotificationProcessor
   pattern: ->
     new RegExp("@" + Meteor.user().profile.login,'i');
 
-  run: (post) ->
+  run: (text, from) ->
     #Let's check if the browser supports notifications
     #return if !("Notification" in window)
 
     if Notification.permission == 'granted'
-      notification = new Notification(post.from.name + " Says:", {
-        body: post.text,
-        icon: post.from.avatar_url
-        })
+#     notification = new Notification(from.name + " Says:", {
+#       body: text,
+#       icon: from.avatar_url
+#       })
 
-    return post
+    return text
 
 $ ->
   $(window).on 'click', () ->

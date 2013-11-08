@@ -2,11 +2,11 @@ class window.PreRenderer
   constructor: (plugins) ->
     @plugins = plugins
 
-  render: (message) ->
+  render: (text, from) ->
     for plugin in @plugins
-      message.content = plugin.run(message.content) if plugin.pattern.test(message.content)
+      text = plugin.run(text, from) if plugin.pattern().test(text)
 
-    message
+    text
 
 notifications = new NotificationProcessor
 window.preRenderer = new PreRenderer([notifications])

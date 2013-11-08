@@ -1,4 +1,4 @@
 Template.post.helpers  {
-  processText: (post) ->
-   window.preRenderer.render(post)
+  processText: (text, from) ->
+   window.preRenderer.render(text, from)
 }
