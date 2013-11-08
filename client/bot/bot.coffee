@@ -8,3 +8,5 @@ class window.PreRenderer
     
     input
 
+notifications = new NotificationProcessor
+window.preRenderer = new PreRenderer([notifications])
