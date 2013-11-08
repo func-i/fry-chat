@@ -3,7 +3,8 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "bootstrap3-less": {}
+      "bootstrap3-less": {},
+      "aws-sdk": {}
     },
     "packages": {
       "iron-router": {
@@ -15,6 +16,16 @@
         "git": "https://github.com/eprochasson/bootstrap3-less",
         "tag": "v0.1.4",
         "commit": "23ec918f8377b15b22cba33e13b717214235c88a"
+      },
+      "aws-sdk": {
+        "git": "https://github.com/peerlibrary/meteor-aws-sdk.git",
+        "tag": "v1.5.0.3",
+        "commit": "6745d769dc64660ccd349c33f9ebaf1583b0961a"
+      },
+      "blocking": {
+        "git": "https://github.com/peerlibrary/meteor-blocking.git",
+        "tag": "v0.4.0",
+        "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
       }
     }
   }
