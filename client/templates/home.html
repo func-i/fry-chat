@@ -1,6 +1,8 @@
 <template name="home">
-  {{> input}}
-  {{#each posts}}
-    {{> post}}
-  {{/each}}
+  {{#if currentUser}}
+    {{> input}}
+    {{#each posts}}
+      {{> post}}
+    {{/each}}
+  {{/if}}
 </template>
