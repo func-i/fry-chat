@@ -1,0 +1,13 @@
+<template name="user_loggedin">
+  <ul class="nav">
+    <li>
+      <img class="img-rounded" src="{{currentUser.profile.avatar_url}}"></img>
+    </li>
+    <li>
+      <a>{{currentUser.profile.name}}</a>
+    </li>
+    <li>
+      <a id="logout">logout</a>
+    </li>
+  </ul>
+</template>
