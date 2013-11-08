@@ -1,6 +1,6 @@
 class window.NotificationProcessor
   pattern: ->
-    "@" + Meteor.user().profile.login
+    new RegExp("@" + Meteor.user().profile.login,'i');
 
   run: (message) ->
     #Let's check if the browser supports notifications
