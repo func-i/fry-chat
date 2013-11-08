@@ -6,7 +6,7 @@ Template.input.events
     post =
       from:
         id: Meteor.userId()
-        name: Meteor.user().profile.name
+        name: Meteor.user().profile.login
         avatar_url: Meteor.user().profile.avatar_url
       text: text.value
       createdAt: time
