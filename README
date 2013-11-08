@@ -1,0 +1,8 @@
+1) Instal Meteor
+
+  $> curl https://install.meteor.com | /bin/sh
+
+2) Run the app
+
+  $> meteor
+
