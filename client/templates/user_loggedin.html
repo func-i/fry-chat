@@ -4,10 +4,10 @@
       <img class="img-circle" src="{{currentUser.profile.avatar_url}}"></img>
     </li>
     <li>
-      <a>{{currentUser.profile.name}}</a>
-    </li>
-    <li>
-      <a id="logout">logout</a>
+     <a id="logout">logout</a>
     </li>
   </ul>
+  {{#if anyOtherUsers currentUsers}}
+    {{> currentUsers}}
+  {{/if}}
 </template>
