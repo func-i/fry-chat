@@ -8,7 +8,7 @@ Router.map ->
       posts: -> 
         Posts.find {},
           sort:
-            created_at: -1
+            createdAt: -1
 
 Router.configure
   layoutTemplate: 'layout',
