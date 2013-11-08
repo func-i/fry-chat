@@ -1,45 +1,56 @@
-Template.video.rendered = () ->
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
-  constraints =
+Template.video.settings = 
+  constraints: 
     audio: false
     video: true
 
-  video = document.querySelector('video')
-
+Template.video.rendered = () -> 
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+  Template.video.settings.video = document.querySelector('video')
 
   successCallback = (stream) ->
     window.stream = stream
     if window.URL
-      video.src = window.URL.createObjectURL(stream)
+      Template.video.settings.video.src = window.URL.createObjectURL(stream)
     else
-      video.src = stream
-    video.play()
+      Template.video.settings.video.src = stream
+    
+    # Start playing the video in the html5 video tag
+    Template.video.settings.video.play()
 
   errorCallback = (error) ->
-    console.log "navigator.getUserMedia error: ", error
-
-  navigator.getUserMedia(constraints, successCallback, errorCallback)
+    console.log "navigator.getUserMedia error: ", error  
+  
+  navigator.getUserMedia(Template.video.settings.constraints, successCallback, errorCallback)
 
 Template.video.events
   'click #record': (event, template) ->
-    video = document.querySelector('video')
-    canvas = document.querySelector('canvas')
-    context = canvas.getContext('2d')
-    # context.drawImage(video, 0, 0)
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+    options = {
+      type: 'gif'
+      video: {
+          width: '100'
+          height: '100'
+      },
+      canvas: {
+          width: '100'
+          height: '100'
+      }
+    }
+    
+    navigator.getUserMedia(
+      Template.video.settings.constraints, 
+      (stream) ->      
+        recorder = window.RecordRTC(stream, options)
+        recorder.startRecording()       
 
-    # document.querySelector('img').src = canvas.toDataURL('image/webp')
+        setTimeout(
+          () ->        
+            recorder.stopRecording((gifUrl) ->
+              window.open(gifUrl)
+            )
+        , 5000)
+    )
 
-    mediaRecorder = new MediaStreamRecorder(stream)
-    mediaRecorder.mimeType = 'video/gif'
-    mediaRecorder.videoWidth = 320
-    mediaRecorder.videoHeight = 240
+    
 
-    mediaRecorder.ondataavailable = (blob) ->
-      reader = new FileReader()
-      reader.onload = (e) ->
-        dataURL = e.target.result
-        window.open dataURL
-
-      reader.readAsDataURL blob
-
-    mediaRecorder.start 3000
+    
