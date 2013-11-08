@@ -6,15 +6,15 @@
     function NotificationProcessor() {}
 
     NotificationProcessor.prototype.pattern = function() {
-      return "@" + Meteor.user().profile.login;
+      return new RegExp("@" + Meteor.user().profile.login, 'i');
     };
 
-    NotificationProcessor.prototype.run = function(message) {
+    NotificationProcessor.prototype.run = function(post) {
       var notification;
       if (Notification.permission === 'granted') {
-        return notification = new Notification("XXX Says:", {
-          body: "BLAH BLAH",
-          icon: "http://i.stack.imgur.com/dmHl0.png"
+        return notification = new Notification(post.from.name + "Says:", {
+          body: post.text,
+          icon: post.from.avatar_url
         });
       }
     };
