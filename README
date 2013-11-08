@@ -1,8 +1,15 @@
 1) Instal Meteor
 
-  $> curl https://install.meteor.com | /bin/sh
+  $> curl https://install.meteor.com | /bin/s
 
-2) Run the app
+2) Install the meteor version manager and package manager
+
+  $> sudo npm install -g meteorite
+
+3) Install the packages using mrt
+
+  $> mrt
+
+* MRT will run the server, but you can run the server manually next time:
 
   $> meteor
-
