@@ -4,14 +4,28 @@ Template.input.events
       ev.preventDefault()
       date = new Date
       time = date.getTime()
-      post =
-        from:
-          id: Meteor.userId()
-          name: Meteor.user().profile.login
-          avatar_url: Meteor.user().profile.avatar_url
-        text: text.value
-        createdAt: time
+      recorder = window.RecordRTC(videoOptions.stream, videoOptions.gifOptions)
 
-      text.value = ""
+      # Delay the recording of the gif by 0.5 seconds
+      setTimeout(
+        () ->
+          recorder.startRecording()
+      , 500)
 
-      Posts.insert post
+      setTimeout(
+        () ->
+          recorder.stopRecording((gifUrl) ->
+            post =
+              from:
+                id: Meteor.userId()
+                name: Meteor.user().profile.login
+                avatar_url: Meteor.user().profile.avatar_url
+                gifUrl: gifUrl
+              text: text.value
+              createdAt: time
+
+            text.value = ""
+
+            Posts.insert post
+          )
+      , 3000)

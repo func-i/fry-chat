@@ -11,7 +11,6 @@
     3. longer video issues
     4. longer audio issues
 */
-
 function RecordRTC(mediaStream, config) {
     config = config || { };
 
