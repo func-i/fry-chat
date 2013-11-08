@@ -1,0 +1,10 @@
+<template name="currentUsers">
+  <ul class="nav">
+    also here
+    {{#each currentUsers}}
+      {{#if notCurrentUser _id}}
+        <li>{{profile.login}}</li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</template>
