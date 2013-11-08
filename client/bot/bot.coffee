@@ -2,9 +2,9 @@ class window.PreRenderer
   constructor: (plugins) ->
     @plugins = plugins
 
-  render: (input) ->
+  render: (message) ->
     for plugin in @plugins
-      input = plugin.run(input)
-    
-    input
+      message.content = plugin.run(message.content) if plugin.pattern.test(message.content)
+
+    message
 
