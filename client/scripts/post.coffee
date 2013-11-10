@@ -4,5 +4,5 @@ Template.post.created = ->
 Template.post.helpers(
   encodedSrc: (blob) ->
     console.log blob
-    "data:image/png;base64," #+ encode64(blob)
+    "data:image/png;base64," + encode64(blob)
 )
