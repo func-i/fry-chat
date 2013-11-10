@@ -1,6 +1,6 @@
 1) Install Meteor
 
-  $> curl https://install.meteor.com | /bin/s
+  $> curl https://install.meteor.com | /bin/sh
 
 2) Install the meteor version manager and package manager
 

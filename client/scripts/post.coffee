@@ -2,7 +2,6 @@ Template.post.created = ->
   window.preRenderer.render(@.data)
 
 Template.post.helpers(
-  encodedSrc: (blob) ->
-    console.log blob
-    "data:image/png;base64," + encode64(blob)
+  encodedSrc: (dataUrl) ->
+    dataUrl.replace "data:image/gif;base64,", "data:image/gif;bogus:ABCDEF;base64,"
 )

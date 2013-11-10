@@ -1,7 +1,7 @@
 <template name="post">
   <div class="row post">
     <div class="col-md-3 from">
-      <img src="{{from.gifUrl}}" loop="0" />
+      <img src="{{encodedSrc from.gifUrl}}" />
       <h3>{{from.name}}</h3>
     </div>
     <div class="col-md-9 content">
